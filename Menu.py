@@ -1,3 +1,11 @@
+from database import(
+add_student,
+update_student,
+view_student,
+delete_student,
+search_student,
+)
+
 while True:
   print("\n------STUDENT MANAGEMENT SYSTEM------")
   print("1. Add student")
@@ -9,14 +17,6 @@ while True:
 
   choice = input("Enter your choice: ")
 
-  from database import(
-  add_student,
-  update_student,
-  view_student,
-  delete_student,
-  search_student,
-)
-
   if choice == "1":
 
     name = input("enter name : ")
@@ -24,7 +24,7 @@ while True:
     branch = input("enter branch: ")
 
     add_student(name ,age , branch )
-    print("Student Data added succesfully !")
+    print("Student Data added successfully !")
 
   elif choice == "2":
 
@@ -33,7 +33,7 @@ while True:
     branch = input("Enter New Branch: ")
 
     update_student(student_id,  age , branch)
-    print("Updated Data Successfully!")
+    print("Updated Data successfully!")
 
   elif choice == "3":
     students = view_student()
@@ -43,13 +43,14 @@ while True:
     else:
       print("No records found")
       
-
   elif choice == "4":
-    
-    student_id = int(input("Enter Student ID: "))
-    delete_student(student_id)
-
-    print('Student data deleted successfully')
+    try:
+      student_id = int(input("Enter Student ID: "))
+      delete_student(student_id)
+    except ValueError:
+      print("Please enter a number")
+    else:
+      print('Student data deleted successfully')
 
   elif choice == "5":
     name = input("enter student name: ")
